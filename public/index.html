@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Baccarat Live</title>
+    <style>
+        body { background:#0f172a; color:white; font-family:sans-serif; text-align:center }
+        .card { background:#1e293b; margin:10px; padding:10px; border-radius:10px }
+    </style>
+</head>
+<body>
+
+<h1>🔥 Baccarat Live</h1>
+<div id="app"></div>
+
+<script>
+async function load() {
+    const res = await fetch('/api');
+    const json = await res.json();
+
+    document.getElementById('app').innerHTML =
+        json.data.map(i =>
+            `<div class="card">
+                <b>${i.table_name}</b><br/>
+                ${i.result}
+            </div>`
+        ).join('');
+}
+
+setInterval(load, 2000);
+load();
+</script>
+
+</body>
+</html>
